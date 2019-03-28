@@ -11,6 +11,7 @@ module.exports = {
     // 先在 node_modules 里面找, 找不到再去 loaders 目录下找
     modules: ["node_modules", path.resolve(__dirname, "loaders")]
   },
+  // README.md
   // module: {
   //   rules: [
   //     // 从右到左
@@ -20,6 +21,7 @@ module.exports = {
   //     }
   //   ]
   // }
+  // README.md
   // module: {
   //   rules: [
   //     // 强制设置顺序
@@ -39,6 +41,7 @@ module.exports = {
   //     }
   //   ]
   // }
+  // README2.md
   // devtool: "source-map",
   // module: {
   //   rules: [
@@ -53,16 +56,35 @@ module.exports = {
   //     }
   //   ]
   // }
-  watch: true,
+  // README3.md
+  // watch: true,
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.js$/,
+  //       use: {
+  //         loader: "banner-loader", // 自己实现, 头部添加注释
+  //         options: {
+  //           text: "devin",
+  //           filename: path.resolve(__dirname, "banner.js")
+  //         }
+  //       }
+  //     }
+  //   ]
+  // }
+  // README4.md
   module: {
     rules: [
       {
+        test: /\.jpg$/,
+        use: "file-loader" // 自己实现, 生成md5文件名, 发射到dist目录, 并返回当前图片路径
+      },
+      {
         test: /\.js$/,
         use: {
-          loader: "banner-loader", // 自己实现, 头部添加注释
+          loader: "babel-loader", // 自己实现, ES6 --> ES5
           options: {
-            text: "devin",
-            filename: path.resolve(__dirname, "banner.js")
+            presets: ["@babel/preset-env"]
           }
         }
       }

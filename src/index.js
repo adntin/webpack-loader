@@ -35,14 +35,19 @@ console.log("index");
 // const str = require("!!inline-loader!./a.js");
 
 // ES6代码, 通过自己实现的babel-loader进行转换
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
-  getName() {
-    return this.name;
-  }
-}
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   getName() {
+//     return this.name;
+//   }
+// }
 
-const person = new Person("devin");
-console.log(person.getName());
+// const person = new Person("devin");
+// console.log(person.getName());
+
+import p from "./avatar.jpg";
+const img = document.createElement("img");
+img.src = p;
+document.body.appendChild(img);
