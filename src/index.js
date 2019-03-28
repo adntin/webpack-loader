@@ -47,7 +47,7 @@ console.log("index");
 // const person = new Person("devin");
 // console.log(person.getName());
 
-import p from "./avatar.jpg";
+import p from "./google.png";
 const img = document.createElement("img");
 img.src = p;
 document.body.appendChild(img);

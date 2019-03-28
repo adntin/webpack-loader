@@ -73,11 +73,36 @@ module.exports = {
   //   ]
   // }
   // README4.md
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.jpg$/,
+  //       use: "file-loader" // 自己实现, 生成md5文件名, 发射到dist目录, 并返回当前图片路径
+  //     },
+  //     {
+  //       test: /\.js$/,
+  //       use: {
+  //         loader: "babel-loader", // 自己实现, ES6 --> ES5
+  //         options: {
+  //           presets: ["@babel/preset-env"]
+  //         }
+  //       }
+  //     }
+  //   ]
+  // }
   module: {
     rules: [
+      // 自己实现, 生成md5文件名, 发射到dist目录, 并返回当前图片路径
+      // 1) 大于limit时, 调用file-loader生成文件
+      // 2) 小于limit时, 生成base64字符串
       {
-        test: /\.jpg$/,
-        use: "file-loader" // 自己实现, 生成md5文件名, 发射到dist目录, 并返回当前图片路径
+        test: /\.png$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 20 * 1024 // 大于200KB会生成文件, 否则生成base64字符串
+          }
+        }
       },
       {
         test: /\.js$/,
