@@ -41,7 +41,7 @@ module.exports = {
   //     }
   //   ]
   // }
-  // README2.md
+  // README2.md ----------------------- 自己实现, babel-loader
   // devtool: "source-map",
   // module: {
   //   rules: [
@@ -56,7 +56,7 @@ module.exports = {
   //     }
   //   ]
   // }
-  // README3.md
+  // README3.md ----------------------- 自己实现, banner-loader
   // watch: true,
   // module: {
   //   rules: [
@@ -72,7 +72,7 @@ module.exports = {
   //     }
   //   ]
   // }
-  // README4.md
+  // README4.md ----------------------- 自己实现, file-loader + url-loader
   // module: {
   //   rules: [
   //     {
@@ -90,17 +90,49 @@ module.exports = {
   //     }
   //   ]
   // }
+  // module: {
+  //   rules: [
+  //     // 自己实现, 生成md5文件名, 发射到dist目录, 并返回当前图片路径
+  //     // 1) 大于limit时, 调用file-loader生成文件
+  //     // 2) 小于limit时, 生成base64字符串
+  //     {
+  //       test: /\.png$/,
+  //       use: {
+  //         loader: "url-loader",
+  //         options: {
+  //           limit: 20 * 1024 // 大于200KB会生成文件, 否则生成base64字符串
+  //         }
+  //       }
+  //     },
+  //     {
+  //       test: /\.js$/,
+  //       use: {
+  //         loader: "babel-loader", // 自己实现, ES6 --> ES5
+  //         options: {
+  //           presets: ["@babel/preset-env"]
+  //         }
+  //       }
+  //     }
+  //   ]
+  // }
+  // README5.md ----------------------- 自己实现, less-loader + css-loader + style-loader
   module: {
+    // 自己实现
     rules: [
-      // 自己实现, 生成md5文件名, 发射到dist目录, 并返回当前图片路径
-      // 1) 大于limit时, 调用file-loader生成文件
-      // 2) 小于limit时, 生成base64字符串
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader", // 插入到html中
+          "css-loader", // css 解析, 比如 url, @import
+          "less-loader" // less --> css
+        ]
+      },
       {
         test: /\.png$/,
         use: {
           loader: "url-loader",
           options: {
-            limit: 20 * 1024 // 大于200KB会生成文件, 否则生成base64字符串
+            limit: 2 * 1024 // 大于200KB会生成文件, 否则生成base64字符串
           }
         }
       },

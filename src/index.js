@@ -1,5 +1,6 @@
 console.log("index");
 
+// inline-loader -------------------------------
 // 1. 行内loader, 执行顺序如下(第二次, 全部执行)
 // loader1
 // loader2
@@ -34,6 +35,7 @@ console.log("index");
 // inline-loader
 // const str = require("!!inline-loader!./a.js");
 
+// babel-loader -------------------------------
 // ES6代码, 通过自己实现的babel-loader进行转换
 // class Person {
 //   constructor(name) {
@@ -43,11 +45,14 @@ console.log("index");
 //     return this.name;
 //   }
 // }
-
 // const person = new Person("devin");
 // console.log(person.getName());
 
-import p from "./google.png";
-const img = document.createElement("img");
-img.src = p;
-document.body.appendChild(img);
+// file-loader + url-loader -------------------------------
+// import p from "./google.png";
+// const img = document.createElement("img");
+// img.src = p;
+// document.body.appendChild(img);
+
+// less-loader + css-loader + style-loader -------------------------------
+import "./index.less";
