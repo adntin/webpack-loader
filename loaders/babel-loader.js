@@ -1,6 +1,7 @@
 const babel = require("@babel/core");
 const loaderUtils = require("loader-utils");
 
+// ES6 --> ES5
 // this 是 loader 的上下文
 function loader(source) {
   // console.log(Object.keys(this));

@@ -39,15 +39,30 @@ module.exports = {
   //     }
   //   ]
   // }
-  devtool: "source-map",
+  // devtool: "source-map",
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.js$/,
+  //       use: {
+  //         loader: "babel-loader", // 自己实现, ES6 --> ES5
+  //         options: {
+  //           presets: ["@babel/preset-env"]
+  //         }
+  //       }
+  //     }
+  //   ]
+  // }
+  watch: true,
   module: {
     rules: [
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader", // 自己实现
+          loader: "banner-loader", // 自己实现, 头部添加注释
           options: {
-            presets: ["@babel/preset-env"]
+            text: "devin",
+            filename: path.resolve(__dirname, "banner.js")
           }
         }
       }

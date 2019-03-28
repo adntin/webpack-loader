@@ -91,71 +91,10 @@
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-console.log("index"); // 1. 行内loader, 执行顺序如下(第二次, 全部执行)
-// loader1
-// loader2
-// loader3
-// loader1
-// loader2
-// inline-loader
-// loader3
-// const str = require("inline-loader!./a.js");
-// 2. 行内loader, 执行顺序如下(第二次, 没有 normal)
-// loader1
-// loader2
-// loader3
-// loader1
-// inline-loader
-// loader3
-// const str = require("!inline-loader!./a.js");
-// 3. 行内loader, 执行顺序如下(第二次, 没有 pre + normal)
-// loader1
-// loader2
-// loader3
-// inline-loader
-// loader3
-// const str = require("-!inline-loader!./a.js");
-// 4. 行内loader, 执行顺序如下(第二次, 没有 pre + normal + post)
-// loader1
-// loader2
-// loader3
-// inline-loader
-// const str = require("!!inline-loader!./a.js");
-
-var Person =
-/*#__PURE__*/
-function () {
-  function Person(name) {
-    _classCallCheck(this, Person);
-
-    this.name = name;
-  }
-
-  _createClass(Person, [{
-    key: "getName",
-    value: function getName() {
-      return this.name;
-    }
-  }]);
-
-  return Person;
-}();
-
-var person = new Person("devin");
-console.log(person.getName());
+eval("/** 给每个文件添加头注释;\n **/console.log(\"index\");\n\n// 1. 行内loader, 执行顺序如下(第二次, 全部执行)\n// loader1\n// loader2\n// loader3\n// loader1\n// loader2\n// inline-loader\n// loader3\n// const str = require(\"inline-loader!./a.js\");\n\n// 2. 行内loader, 执行顺序如下(第二次, 没有 normal)\n// loader1\n// loader2\n// loader3\n// loader1\n// inline-loader\n// loader3\n// const str = require(\"!inline-loader!./a.js\");\n\n// 3. 行内loader, 执行顺序如下(第二次, 没有 pre + normal)\n// loader1\n// loader2\n// loader3\n// inline-loader\n// loader3\n// const str = require(\"-!inline-loader!./a.js\");\n\n// 4. 行内loader, 执行顺序如下(第二次, 没有 pre + normal + post)\n// loader1\n// loader2\n// loader3\n// inline-loader\n// const str = require(\"!!inline-loader!./a.js\");\n\n// ES6代码, 通过自己实现的babel-loader进行转换\nclass Person {\n  constructor(name) {\n    this.name = name;\n  }\n  getName() {\n    return this.name;\n  }\n}\n\nconst person = new Person(\"devin\");\nconsole.log(person.getName());\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map
