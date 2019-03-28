@@ -33,3 +33,16 @@ console.log("index");
 // loader3
 // inline-loader
 // const str = require("!!inline-loader!./a.js");
+
+// ES6代码, 通过自己实现的babel-loader进行转换
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+}
+
+const person = new Person("devin");
+console.log(person.getName());

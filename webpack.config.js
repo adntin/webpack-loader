@@ -20,22 +20,36 @@ module.exports = {
   //     }
   //   ]
   // }
+  // module: {
+  //   rules: [
+  //     // 强制设置顺序
+  //     {
+  //       test: /\.js$/,
+  //       use: "loader1",
+  //       enforce: "pre"
+  //     },
+  //     {
+  //       test: /\.js$/,
+  //       use: "loader2"
+  //     },
+  //     {
+  //       test: /\.js$/,
+  //       use: "loader3",
+  //       enforce: "post"
+  //     }
+  //   ]
+  // }
+  devtool: "source-map",
   module: {
     rules: [
-      // 强制设置顺序
       {
         test: /\.js$/,
-        use: "loader1",
-        enforce: "pre"
-      },
-      {
-        test: /\.js$/,
-        use: "loader2"
-      },
-      {
-        test: /\.js$/,
-        use: "loader3",
-        enforce: "post"
+        use: {
+          loader: "babel-loader", // 自己实现
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
       }
     ]
   }
